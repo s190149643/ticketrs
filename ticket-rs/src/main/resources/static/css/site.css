@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+body {
+	background-color: gainsboro !important;
+}
+.btn-outline-primary{
+	border: 1px solid rgb(46,117,182) !important;
+	color:rgb(46,117,182) !important;
+}
+.btn-outline-primary:hover {
+	background-color: rgb(46,117,182) !important;
+	color:whitesmoke !important;
+}
+.bg-primary {
+	background-color: rgb(46,117,182) !important;
+}
+.text-primary {
+	color: rgb(46,117,182) !important;
+}
+.btn-primary {
+	background-color: rgb(46,117,182) !important;
+}
+.btn-primary:hover {
+	background-color: rgb(130,209,234) !important;
+		border:none;
+		color:black;
+}

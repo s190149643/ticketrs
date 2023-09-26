@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/site.css}">
+
+	<title>Ticket Reserve System - Change Password</title>
+</head>
+
+<body class="p-3 mb-2 bg-light text-black">
+	<div class="d-flex flex-column justify-content-center min-vh-100 min-vw-100">
+
+
+		<div class="w-50 m-auto d-flex flex-column justify-content-center align-items-center ">
+			<a th:href="@{/}">
+				<img width="100" height="70" src="/images/logo.png" class="rounded m-auto" />
+			</a>
+
+			<form id="usrFrm" th:action="@{/changepass}" method="POST" class="w-75" th:object="${userModel}">
+
+				<div class="form-group mt-3">
+					<label>Email</label>
+
+					<input type="input" class="form-control  p-2"  th:value="${userModel.email}" readonly>
+				</div>
+				<div class="form-group mt-3">
+					<label id="passwordLabel">Old Password</label>
+
+					<input type="password" th:field="*{oldPassword}" class="form-control  p-2" placeholder="Password"
+						maxlength="20" required>
+				</div>
+				<div class="form-group mt-3">
+					<label id="passwordLabel">Password</label>
+
+					<input id="password" type="password" th:field="*{password}" class="form-control  p-2" placeholder="Password"
+						maxlength="20" required>
+				</div>
+				<div class="form-group mt-3 text-center" th:if="${result != null}">
+					<div class="alert alert-info w-100" th:text="${result}"></div>
+				</div>
+				<div class="form-group mt-3 d-flex justify-content-center">
+
+
+					<button type="button" onclick="testPassword()" class="btn btn-primary  px-5">Change Password</button>
+
+				</div>
+
+
+
+			</form>
+
+		</div>
+	</div>
+<script>
+
+		function testPassword(){
+			
+			let pass = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$");
+			let entered = document.getElementById('password').value;
+			if(pass.test(entered))
+			{
+				let frm = document.getElementById('usrFrm');
+				frm.submit();
+			}
+			else
+			{
+				alert("Please use password that 8 characters and has at least 1 letter, 1 number, and 1 special symbole")
+			}
+		}
+		function passChange(){
+			passChanged = true;
+		}
+	</script>
+</body>
+
+</html>

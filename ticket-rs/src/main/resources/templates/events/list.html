@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/master_page :: header">
+</head>
+
+<body class="vh-100">
+	<nav th:replace="fragments/master_page :: navbar">
+
+	</nav>
+	<div class="container mt-3">
+
+
+		<hr>
+		<a href="#"  th:href="@{/events/create}" class="btn btn-outline-primary">New Event</a>
+		<hr>
+
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover table-responsive">
+				<thead>
+					<tr>
+						<th style="width: 50%" scope="col">Name</th>
+						<th style="width: 20%" scope="col">Location</th>
+						
+						<th style="width: 30%" scope="col">Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="event : ${events}">
+						<td th:text="${event.name}">
+						</td>
+						<td th:text="${event.location}">
+						</td>
+					
+
+						<td>
+							<a class="btn btn-warning btn-sm" href="#"
+								th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a> |
+							<a class="btn btn-danger btn-sm" href="#"
+								th:href="@{/events/delete/{id}(id=${event.id})}">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+	<div th:replace="fragments/master_page :: scripts"></div>
+</body>
+
+</html>

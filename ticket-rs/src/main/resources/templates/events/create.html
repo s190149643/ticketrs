@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/master_page :: header">
+
+</head>
+
+<body class="vh-100">
+	<nav th:replace="fragments/master_page :: navbar">
+
+	</nav>
+	<div class="container mt-3">
+		<hr>
+		<h3 class="w-full text-center r my-3">New Event</h3>
+		<hr>
+		<form method="POST" th:action="@{/events/create}" th:object="${event}">
+			<div class="form-group my-2">
+				<label>Name: </label>
+				<input type="text" th:field="*{name}" class="form-control" />
+			</div>
+			<div class="form-group my-2">
+				<label>Location: </label>
+				<input type="text" th:field="*{location}" class="form-control" />
+			</div>
+			
+
+			<div class="form-group my-2 d-flex flex-row justify-content-between">
+				<a th:href="@{/events}" class="btn btn-outline-primary m2">Cancel</a>
+				<button type="submit" class="btn btn-primary m2">Save</button>
+
+			</div>
+		</form>
+	</div>
+
+	<div th:replace="fragments/master_page :: scripts"></div>
+</body>
+
+</html>
